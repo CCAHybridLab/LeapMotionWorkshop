@@ -4,7 +4,7 @@ import cc.arduino.*;
 
 Arduino arduino;
 LeapMotion leap;
-//println(Arduino.list()); //this is where you would find out what port arduino os connected to 
+//println(Arduino.list()); //this is where you would find out what port arduino is connected to 
 
 int Bbrightness;
 int Rbrightness;
