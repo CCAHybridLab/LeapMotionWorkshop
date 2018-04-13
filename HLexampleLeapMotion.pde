@@ -29,7 +29,7 @@ int bPin = 10;
 
 void setup() {
 
-  arduino = new Arduino(this, Arduino.list()[2], 57600);
+  arduino = new Arduino(this, Arduino.list()[2], 57600);//change the value here to match what # port your Arduino is on start counting at 0
   leap = new LeapMotion(this);
 
   size(1000, 800);//size of canvas
@@ -57,9 +57,9 @@ void draw() {
     rToGcolor = map(fingerIndex.getPosition().x, 300, 700, 0, 300  ); //map(VALUE, min, max, mapmin, mapmax)
     crToGcolor = constrain(rToGcolor, 0, 300); //HGB values go to 360 but we stop at 300 to prevent it from being red on both sides
 
-//Change color mode from RGB(Red,Green,Blue) to HSB(Hue Saturation,Brightness) https://processing.org/reference/colorMode_.html
+//Change color mode from RGB(Red,Green,Blue) to HSB(Hue, Saturation,Brightness) https://processing.org/reference/colorMode_.html
     colorMode(HSB, 360, 100, 100, 100);//mode, color range total, max red, max g, max blue
-   //Hue us from the X finger value, saturation is 100, brightness is from the Y finger value map
+   //Hue is from the X finger value, saturation is 100, brightness is from the Y finger value map
     bgOrigin = color(int(crToGcolor), 100, int(cbrightness));
     //changes color mode back to RGB
    colorMode(RGB, 255);
@@ -68,7 +68,7 @@ void draw() {
     Gbrightness = int(green(bgOrigin));
     Bbrightness = int(blue(bgOrigin));
     
- // maps the x and z to of the leap motion to the size of the canvas 
+ // maps the x and z to of the leap motion to the size of the canvas for use in ellipse x and z values 
     ex = map(fingerIndex.getPosition().x, 200, 900, 0, width);
     ez = map(fingerIndex.getPosition().z, 0, 100, 0, height);
 
